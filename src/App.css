@@ -6,15 +6,15 @@
 
 
 button{
-  padding: 10px 15px;
-  border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  color: white;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  background-color: black;
-  margin: 2.5rem 2.5rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    color: white;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background-color: black;
+    margin: 2.5rem 2.5rem;
 }
 
 button:hover {

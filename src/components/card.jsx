@@ -1,6 +1,10 @@
 import React from 'react'
 import './card.css'
 function card({ name, address, latitude, longitude, onEdit, onDelete }) {
+
+    const [newName, setNewName] = React.useState(name);
+    const [isEditing, setIsEditing] = React.useState(false);
+
   return (
     <div className="card">
         <h3>{name}</h3>        

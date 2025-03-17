@@ -2,8 +2,9 @@ import React, { useState, useCallback } from 'react';
 import { GoogleMap, LoadScript, InfoWindow, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '650px',
-  height: '35g0px',
+  width: "100%",
+  height: '350px',
+margin: '0 auto'
 };
 
 const center = {
@@ -11,9 +12,9 @@ const center = {
   lng: -122.4194,
 };
 
-const Map = () => {
+const Map = ({setSelectedLocation}) => {
   const [selectedPosition, setSelectedPosition] = useState(null);
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState("");
 
   const handleMapClick = useCallback((event) => {
     const lat = event.latLng.lat();
@@ -24,17 +25,14 @@ const Map = () => {
     const latlng = { lat, lng };
 
     geocoder.geocode({ location: latlng }, (results, status) => {
-      if (status === 'OK') {
-        if (results[0]) {
-          setAddress(results[0].formatted_address);
-        } else {
-          setAddress('No address found');
-        }
-      } else {
-        setAddress('Geocoder failed due to: ' + status);
-      }
+        if (status === "OK" && results[0]) {
+            setAddress(results[0].formatted_address);
+            setSelectedLocation({ lat, lng, address: results[0].formatted_address });
+          } else {
+            setAddress("No address found");
+          }
     });
-  }, []);
+  }, [ setSelectedLocation]);
 
   const handleInfoWindowCloseClick = useCallback(() => {
     setSelectedPosition(null);
@@ -57,7 +55,7 @@ const Map = () => {
               onCloseClick={handleInfoWindowCloseClick}
             >
               <div>
-                <h4>Address</h4>
+                <h4>Dirección</h4>
                 <p>{address}</p>
               </div>
             </InfoWindow>
