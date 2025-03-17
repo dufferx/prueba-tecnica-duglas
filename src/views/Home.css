@@ -1,0 +1,17 @@
+.label {
+    text-align: start;
+    margin-bottom: 0.5rem;
+}
+
+h1{
+    margin-bottom: 3rem;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    background-color: transparent;
+}
