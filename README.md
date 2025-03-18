@@ -1,12 +1,100 @@
-# React + Vite
+# Prueba técnica Duglas Pineda
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Aplicación de gestión de ubicaciones de Google Maps, con almacenamiento en Firebase
 
-Currently, two official plugins are available:
+##  Instalación y ejecución
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  
 
-## Expanding the ESLint configuration
+###  Clonar el repositorio
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```sh
+
+git  clone  https://github.com/dufferx/prueba-tecnica-duglas.git
+
+cd  prueba-tecnica-duglas
+
+```
+
+  
+
+###  Instalar dependencias
+
+```sh
+
+npm  install
+
+```
+
+
+###  Ejecutar el proyecto
+
+```sh
+
+npm  run  dev
+
+```
+
+
+  
+
+## Uso de la aplicación
+
+  
+
+1.  **Añadir una ubicación**
+
+- Escribe el nombre de la ubicación en el campo de texto.
+
+- Selecciona una ubicación exacta en el mapa.
+
+- Presiona el botón "Añadir" para guardar la ubicación.
+
+  
+
+2.  **Ver ubicaciones guardadas**
+
+- En la lista de ubicaciones, verás el nombre, dirección y coordenadas guardadas.
+
+  
+
+3.  **Editar una ubicación**
+
+- Presiona el botón "Editar" en la ubicación que deseas modificar.
+
+- Cambia el nombre o selecciona una nueva ubicación en el mapa.
+
+- Guarda los cambios.
+
+  
+
+4.  **Eliminar una ubicación**
+
+- Presiona el botón "Eliminar" en la ubicación que deseas borrar.
+
+
+##  Tecnologías utilizadas
+
+- **React.js** (Fronted)
+- **React Router** (Manejo de rutas)
+- **Firebase Firestore** (Base de datos para almacenar las ubicaciones)
+- **Maps Javascript API** (Selección de ubicación y visualización en el mapa)
+- **Geocoding API Google** (Reverse geocoding para obtener dirección)
+- **React Toastify** (Notificaciones de éxito y error)
+- **CSS** (Estilización del proyecto)
+
+ 
+
+  
+
+## Contacto
+
+📩 00116921@uca.edu.sv
+
+  
+
+---
+
+  
+
+**Gracias por la oportunidad** 
