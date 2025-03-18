@@ -53,10 +53,6 @@ function home() {
         }
     };
 
-    const handleEdit = async (id, newName) => {
-        await updateDoc(doc(db, "locations", id), { name: newName });
-    };
-
     const handleDelete = async (id) => {
         await deleteDoc(doc(db, "locations", id));
     }
@@ -86,11 +82,11 @@ function home() {
         {locations.map((location) => (
             <Card
             key={location.id}
+            id={location.id}
             name={location.name}
             address={location.address}
             latitude={location.latitude}
             longitude={location.longitude}
-            onEdit={(newName) => handleEdit(location.id, newName)}
             onDelete={() => handleDelete(location.id)}
             />
         ))}

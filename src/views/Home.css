@@ -31,8 +31,14 @@ form{
     margin: 0 auto;
 }
 
+.submit-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .submit-buttton{
-        padding: 10px 15px;
         border: none;
         border-radius: 30px;
         font-size: 16px;
@@ -40,10 +46,39 @@ form{
         padding: 1rem 2rem;
         cursor: pointer;
         background-color: black;
-        margin: 2.5rem 0;
         width: 10rem;
         margin: 2.5rem auto;
         text-align: center;
+    }
+
+.update-buttton{
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    color: white;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background-color: black;
+    width: 10rem;
+    text-align: center;
+    margin: 1rem 0rem;
+    }
+
+    .submit-buttton:hover{
+        background-color: #333;
+    }
+
+    .cancel-buttton{
+        border: 1px solid #bdbdbd;
+        border-radius: 30px;
+        font-size: 16px;
+        color: black;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        background-color:white;
+        width: 10rem;
+        text-align: center;
+        margin: 1rem 0;
     }
 
 @media (max-width: 768px) {

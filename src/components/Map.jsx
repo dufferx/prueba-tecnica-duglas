@@ -1,20 +1,27 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { GoogleMap, LoadScript, InfoWindow, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: "100%",
   height: '350px',
-margin: '0 auto'
+  margin: '0 auto'
 };
 
-const center = {
+const defaultCenter = {
   lat: 37.7749,
   lng: -122.4194,
 };
 
-const Map = ({setSelectedLocation}) => {
-  const [selectedPosition, setSelectedPosition] = useState(null);
-  const [address, setAddress] = useState("");
+const Map = ({ setSelectedLocation, initialPosition }) => {
+  const [selectedPosition, setSelectedPosition] = useState(initialPosition || null);
+  const [address, setAddress] = useState(initialPosition?.address || "");
+
+  useEffect(() => {
+    if (initialPosition) {
+      setSelectedPosition(initialPosition);
+      setAddress(initialPosition.address);
+    }
+  }, [initialPosition]);
 
   const handleMapClick = useCallback((event) => {
     const lat = event.latLng.lat();
@@ -25,14 +32,14 @@ const Map = ({setSelectedLocation}) => {
     const latlng = { lat, lng };
 
     geocoder.geocode({ location: latlng }, (results, status) => {
-        if (status === "OK" && results[0]) {
-            setAddress(results[0].formatted_address);
-            setSelectedLocation({ lat, lng, address: results[0].formatted_address });
-          } else {
-            setAddress("No address found");
-          }
+      if (status === "OK" && results[0]) {
+        setAddress(results[0].formatted_address);
+        setSelectedLocation({ lat, lng, address: results[0].formatted_address });
+      } else {
+        setAddress("No address found");
+      }
     });
-  }, [ setSelectedLocation]);
+  }, [setSelectedLocation]);
 
   const handleInfoWindowCloseClick = useCallback(() => {
     setSelectedPosition(null);
@@ -43,17 +50,14 @@ const Map = ({setSelectedLocation}) => {
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
+        center={selectedPosition || defaultCenter}
+        zoom={selectedPosition ? 15 : 10}
         onClick={handleMapClick}
       >
         {selectedPosition && (
           <>
             <Marker position={selectedPosition} />
-            <InfoWindow
-              position={selectedPosition}
-              onCloseClick={handleInfoWindowCloseClick}
-            >
+            <InfoWindow position={selectedPosition} onCloseClick={handleInfoWindowCloseClick}>
               <div>
                 <h4>Dirección</h4>
                 <p>{address}</p>

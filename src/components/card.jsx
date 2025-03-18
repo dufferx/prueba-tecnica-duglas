@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './card.css'
-function card({ name, address, latitude, longitude, onEdit, onDelete }) {
+function card({ id, name, address, latitude, longitude, onDelete }) {
+
+    const navigate = useNavigate();
 
     const [newName, setNewName] = React.useState(name);
     const [isEditing, setIsEditing] = React.useState(false);
@@ -11,7 +14,7 @@ function card({ name, address, latitude, longitude, onEdit, onDelete }) {
         <h3 className='address'>{address}</h3>
         <p> {latitude},  {longitude}</p>
         <div className="button-container">
-        <button className="buttons" onClick={onEdit}>Editar</button>
+        <button className="buttons" onClick={() => navigate(`/edit/${id}`)}>Editar</button>
         <button className="buttons" onClick={onDelete}>Eliminar</button>
         </div>
   
