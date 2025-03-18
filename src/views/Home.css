@@ -13,7 +13,7 @@ input{
     margin-bottom: 1rem;
     border: 1px solid #bdbdbd;
     border-radius: 4px;
-    background-color: transparent;
+    background-color: white;
 }
 
 .cards-container{
@@ -21,6 +21,7 @@ input{
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    margin-bottom: 2rem;
     gap: 2rem;
 }
 

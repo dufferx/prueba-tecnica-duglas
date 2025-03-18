@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Map from "../components/Map";
@@ -26,7 +27,7 @@ function EditLocation() {
         setSelectedLocation(location);
         setInitialPosition(location);
       } else {
-        console.error("Ubicación no encontrada");
+        toast.error("Ubicación no encontrada.")
       }
     };
 
@@ -35,7 +36,11 @@ function EditLocation() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    if (!name || !selectedLocation) return;
+    if (!name || !selectedLocation){
+        toast.warn("Ingrese un nombre y seleccione una ubicación.");
+        return
+
+    }
 
     try {
       await updateDoc(doc(db, "locations", id), {
@@ -45,10 +50,10 @@ function EditLocation() {
         longitude: selectedLocation.lng,
       });
 
-      console.log("Ubicación actualizada");
+      toast.success("Ubicación actualizada con éxito.");
       navigate("/");
     } catch (error) {
-      console.error("Error al actualizar: ", error);
+        toast.error("Error al actualizar la ubicación.");
     }
   };
 

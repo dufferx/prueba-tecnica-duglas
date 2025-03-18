@@ -1,4 +1,5 @@
 import React, { useState} from 'react'
+import { toast } from 'react-toastify'
 import Map from '../components/Map'
 import Card from '../components/card'
 import { db } from '../firebase'
@@ -27,6 +28,7 @@ function home() {
     const handleAddFormSubmit = async (e) => {
         e.preventDefault();
         if (!name || !selectedLocation) {
+            toast.warn("Ingrese un nombre y seleccione una ubicación.");
             return;
         }
 
@@ -38,23 +40,18 @@ function home() {
                 longitude: selectedLocation.lng,
                 
             });
-
-            console.log("Ubicación guardada");
-            console.log("Nombre: ", name);
-            console.log("Dirección: ", selectedLocation.address);
-            console.log("Latitud: ", selectedLocation.lat);
-            console.log("Longitud: ", selectedLocation.lng);
-
+            toast.success("Ubicación añadida con éxito.");
             setName("");
             setSelectedLocation(null);
 
         } catch (error) {
-            console.error("Error al guardar: ", error);
+            toast.error("Error al guardar la ubicación.");
         }
     };
 
     const handleDelete = async (id) => {
         await deleteDoc(doc(db, "locations", id));
+        toast.success("Ubicación eliminada con éxito.");
     }
 
 
